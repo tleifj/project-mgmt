@@ -1,0 +1,29 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+model Task {
+  id              Int       @default(autoincrement()) @id
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  name            String    @db.VarChar(255)
+  description   String    @db.VarChar(600)
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId       Int       
+}
+
+model Project {
+  id              Int       @default(autoincrement()) @id
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  name            String    @db.VarChar(255)
+  description   String    @db.VarChar(600)
+  tasks           Task[]
+}
