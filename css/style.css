@@ -1,0 +1,265 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /*
+    2. Remove default margin
+  */
+  * {
+    margin: 0;
+  }
+  /*
+    3. Allow percentage-based heights in the application
+  */
+  html, body {
+    height: 100%;
+  }
+  /*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+    6. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+    7. Remove built-in form typography styles
+  */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  /*
+    8. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+  
+  * {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .app-wrapper {
+    height: 100vh;
+      display: flex;
+  }
+  
+  .wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top:0;
+  }
+  
+  /* Nav Area */
+  .top-bar {
+    width: 100%;
+    margin-top: 0;
+    position: relative;
+    height: 80px;
+    text-align: left;
+  }
+  
+  .top-bar a {
+    text-decoration: none;
+  }
+  
+  .top-bar a:hover {
+    opacity: 0.5;
+  }
+  
+  .top-bar a:visited {
+    color: initial;
+  }
+  #title {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    display: inline-block;
+    height: 100%;
+  }
+  .nav {
+    height: 100%;
+    display: inline-block;
+  }
+  .nav a {
+    margin: 0 20px;
+    font-size: 120%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .table {
+    display: block;
+    
+  }
+  
+  /* Styles for Cards */
+  .row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid rgb(233, 233, 233);
+    padding: 10px;
+    transition: 0.5s all;
+    font-size: 100%;
+  }
+  
+  .card {
+    padding: 20px;
+    border-radius: 5px;
+    /* border: 1px solid rgb(233, 233, 233); */
+    box-shadow: rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px;
+  }
+  
+  .card:hover {
+    --shadow: rgba(53, 53, 53, 0.103);
+    /* transform: rotateY(180deg) translate(20px, 20px);
+    background: pink; */
+  }
+  
+  .card:hover .main-content {
+    pointer-events: initial;
+    opacity: 1;
+  }
+  
+  .card * {
+    margin: 0;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .organization-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .main-content {
+    /* padding: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s all; */
+  }
+  
+  .owner {
+    color: grey;
+    font-size: 110%;
+  }
+  
+  .organization-name {
+    font-weight: bold;
+    font-size: 130%;
+  }
+  
+  h5.organization-name {
+    
+  }
+  
+  .info ul {
+    padding: 10px;
+    padding-top: 0px;
+    border-radius: 7px;
+  }
+  
+  li {
+    list-style-type: none;
+    margin: 0;
+  }
+  
+  .info {
+    color: rgb(83, 83, 83);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .info.likes {
+    margin-top: 25px;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .btn-container {
+    /* text-align: right;
+    padding: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px; */
+  }
+  
+  .btn {
+    --accent: grey;
+    cursor: pointer;
+    background: transparent;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 90%;
+    letter-spacing: 1px;
+    transition: 0.5s all;
+    outline: none;
+  }
+  
+  .btn:hover {
+    background: var(--accent);
+    color: white;
+  }
+  
+  .edit.btn {
+    --accent: green;
+  }
+  
+  .delete.btn {
+    --accent: red;
+    margin-left: 10px;
+  }
+  
+  .view.btn {
+    --accent: blue;
+    margin-left: 10px;
+  }
+  
+  /* Delete organization */
+  .organization-container {
+    width: 100%;
+  }
+  
+  .confirmation-box.show {
+    display: block;
+  }
+  
+  
+  

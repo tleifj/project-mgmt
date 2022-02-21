@@ -1,7 +1,28 @@
-import '../styles/globals.css'
+import "../css/style.css";
+// import "../css/form.css";
+import Head from "next/head";
+import Topbar from "../components/Topbar";
+import Sidebar from "../components/Sidebar";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+
+function MyApp({
+  Component,
+  pageProps: { ...pageProps },
+}) {
+  return (
+    <html >
+      <Head>
+        <title>Foundation Explorer</title>
+      </Head>
+      <div className="app-wrapper">
+        <Sidebar></Sidebar>
+        <main className="table wrapper">
+          <Topbar></Topbar>
+          <Component {...pageProps} />
+        </main>
+      </div>
+    </html>
+  );
 }
 
-export default MyApp
+export default MyApp;
