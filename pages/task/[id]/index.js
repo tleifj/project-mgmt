@@ -1,5 +1,5 @@
-const OrganizationPage = ({ organization, emails }) => {
+const TaskPage = () => {
     return "test";
 }
 
-export default OrganizationPage;
+export default TaskPage;
