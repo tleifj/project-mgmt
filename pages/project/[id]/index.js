@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client"
+import Task from "../../../components/Task"
 
 const prisma = new PrismaClient();
 
@@ -7,23 +8,25 @@ export default function SingleProject({ project, tasks }) {
         <>
         <h1>{project.name}</h1>
         <h2>Tasks</h2>
-        <ul>
+        <div>
+        <div className="table-header">
+          <div className="table-cell">Name</div>
+          <div className="table-cell">Assigned</div>
+          <div className="table-cell">Status</div>
+        </div> 
         {tasks.map(task => (
-            <li>{task.name}</li>
+          <Task key="task.id" task={task} />
+            
         )   
         )}
-        </ul>
+        </div>
         <button>Add Task</button>
         </>
     )
 }
 
 export async function getServerSideProps(params) {
-    // const project = await prisma.project.findUnique({
-    //     where: {
-    //       id: 1,
-    //     },
-    //   });
+
       const project = await prisma.project.findUnique({
         where: {
           id: parseInt(params.query.id),
@@ -36,13 +39,27 @@ export async function getServerSideProps(params) {
         where: {
           projectId: parseInt(params.query.id),
         },
+        include: { users: true },
       });
 
       const tasks = tasksResults.map((task) => {
-        task.createdAt = task.createdAt.toString();
-        task.updatedAt = task.updatedAt.toString();
-        return task
-      })
+            console.log(task.users);
+            task.createdAt = task.createdAt.toString();
+            task.updatedAt = task.updatedAt.toString();
+            if (task.users.length > 0){
+              const users = task.users.map((user) => {
+                // user.createdAt = user.createdAt.toString();
+                user.createdAt = user.createdAt.toString();
+                user.updatedAt = user.updatedAt.toString();
+                console.log(user);
+                // user.assignedAt = user.assignedAt.toString();
+                return user;
+              });
+
+            }
+            return task;
+          })
+          console.log(tasks)
       
     return { props: { project, tasks } }
 }

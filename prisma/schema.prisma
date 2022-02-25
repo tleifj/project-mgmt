@@ -17,7 +17,7 @@ model Task {
   description   String    @db.VarChar(600)
   project   Project @relation(fields: [projectId], references: [id])
   projectId       Int
-  users UsersOnTasks[]       
+  users User[]       
 }
 
 model Project {
@@ -46,16 +46,6 @@ model User {
   updatedAt       DateTime  @updatedAt
   firstName            String    @db.VarChar(255)
   lastName            String    @db.VarChar(255)
-  tasks UsersOnTasks[]
+  tasks Task[]
   email String  @unique     
-}
-
-model UsersOnTasks {
-  task       Task     @relation(fields: [taskId], references: [id])
-  taskId     Int // relation scalar field (used in the `@relation` attribute above)
-  user   User @relation(fields: [userId], references: [id])
-  userId Int // relation scalar field (used in the `@relation` attribute above)
-  assignedAt DateTime @default(now())
-
-  @@id([taskId, userId])
 }
