@@ -43,7 +43,7 @@ export async function getServerSideProps(params) {
       });
 
       const tasks = tasksResults.map((task) => {
-            console.log(task.users);
+            // console.log(task.users);
             task.createdAt = task.createdAt.toString();
             task.updatedAt = task.updatedAt.toString();
             if (task.users.length > 0){
@@ -51,7 +51,7 @@ export async function getServerSideProps(params) {
                 // user.createdAt = user.createdAt.toString();
                 user.createdAt = user.createdAt.toString();
                 user.updatedAt = user.updatedAt.toString();
-                console.log(user);
+                // console.log(user);
                 // user.assignedAt = user.assignedAt.toString();
                 return user;
               });
@@ -59,7 +59,7 @@ export async function getServerSideProps(params) {
             }
             return task;
           })
-          console.log(tasks)
+          // console.log(tasks)
       
     return { props: { project, tasks } }
 }

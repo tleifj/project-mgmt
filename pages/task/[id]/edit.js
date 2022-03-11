@@ -1,25 +1,27 @@
-
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
+import Form from '../../../components/NewTaskForm';
+const fetcher = (url) =>
+  fetch(url)
+    .then((res) => res.json())
+    .then((json) => json.data)
 
 const EditTask = () => {
-    // const router = useRouter()
-    // const { id } = router.query
-    // const { data: organization, error } = useSWR(id ? `/api/organizations/${id}` : null, fetcher)
+    const router = useRouter()
+    const { id } = router.query
+    const { data: task, error } = useSWR(id ? `/api/task/${id}` : null, fetcher)
   
+    console.log(task);
     // if (error) return <p>Failed to load</p>
     // if (!organization) return <p>Loading...</p>
   
-    // const organizationForm = {
-    //   name: organization.name,
-    //   founder_name: organization.founder_name,
-    //   type: organization.type,
-    //   age: organization.age,
-     
-    //   image_url: organization.image_url,
-      
-    // }
+    const taskForm = {
+        name: task.name,
+       description: task.description
+        
+      }
   
-    // return <Form formId="edit-organization-form" organizationForm={organizationForm} forNewOrganization={false} />
-    return 'Edit form!';
+    return <Form formId="edit-task-form" organizationForm={taskForm} />
 }
 
 export default EditTask;
