@@ -2,14 +2,21 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { mutate } from 'swr'
 
-const Form = () => {
+const Form = ({ formId, taskForm}) => {
     const router = useRouter();
+
+    // This is used for managing the local state of the form
+    const [form, setForm] = useState({
+        name: taskForm.name,
+        description: taskForm.description,
+    });
+
     // function to handle editing an existing task (PUT)
     // We pass form because this holds the info for the task
     const putData = async (form) => {
         // We get the id of the task we are currently editing for updating DB
         const {id} = router.query;
-
+        console.log(form);
         // Let's try to hit the API to update the task
         try {
             const res = await fetch(`/api/task/${id}`, {
@@ -23,10 +30,11 @@ const Form = () => {
             if (!res.ok) {
                 throw new Error('Something went wrong!');
             }
+            console.log(res);
 
             // Otherwise, we will get the data from the API response
             const { data } = await res.json();
-            mutate(`/api/organizations/${id}`, data, false);
+            mutate(`/api/task/${id}`, data, false);
             router.push('/')
         } catch (error) {
             
@@ -34,7 +42,42 @@ const Form = () => {
 
     }
 
-    return <p>EDIT FORM TEST</p>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        putData(form);
+    }
+
+    const handleChange = (e) => {
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
+
+        setForm({
+            ...form,
+            [name]: value  
+        })
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input 
+                type="text" 
+                name="name" 
+                value={form.name}
+                onChange={handleChange}>
+                
+            </input>
+            <input 
+                type="text" 
+                name="description" 
+                value={form.description}
+                onChange={handleChange}>
+                
+            </input>
+            <button type="submit">Submit</button>
+
+        </form>
+    )
 }
 
 export default Form;

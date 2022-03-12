@@ -10,7 +10,7 @@ const StyledTask = styled.div`
 export default function Task({ task }) {
     return (
         <>
-            <StyledTask>
+            <StyledTask key={task.id}>
                 <div className="table-cell">{task.name}</div>
                 <div className="table-cell"> {task.users.map((user) => user.firstName + ' ' + user.lastName)}</div>
                 <div className="table-cell">Status</div>

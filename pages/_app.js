@@ -12,7 +12,7 @@ function MyApp({
   return (
     <html >
       <Head>
-        <title>Foundation Explorer</title>
+        <title>Project Manager</title>
       </Head>
       <div className="app-wrapper">
         <Sidebar></Sidebar>

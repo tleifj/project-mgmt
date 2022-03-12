@@ -14,10 +14,10 @@ export default function SingleProject({ project, tasks }) {
           <div className="table-cell">Assigned</div>
           <div className="table-cell">Status</div>
         </div> 
-        {tasks.map(task => (
-          <Task key="task.id" task={task} />
+        {tasks.map(task => {
+         return  <Task key={task.id} task={task} />
             
-        )   
+        }   
         )}
         </div>
         <button>Add Task</button>

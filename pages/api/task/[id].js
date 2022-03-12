@@ -10,13 +10,14 @@ export default async function handler(req, res) {
     const prisma = new PrismaClient();
 
     if (method === 'GET') {
+        console.log(id);
         
-        const data = await prisma.task.findUnique({
+        const task = await prisma.task.findUnique({
             where: {
             id: parseInt(id),
             },
         })
-        res.status(200).json(data)
+        res.status(200).json({ success: true, data: task })
     }
 
     if (method === 'PUT') {
