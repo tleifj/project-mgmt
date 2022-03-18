@@ -59,7 +59,6 @@ export async function getServerSideProps(params) {
             }
             return task;
           })
-          // console.log(tasks)
       
     return { props: { project, tasks } }
 }

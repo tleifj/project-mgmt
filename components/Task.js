@@ -8,6 +8,7 @@ const StyledTask = styled.div`
     justify-content: flex-start;
 `;
 export default function Task({ task }) {
+    console.log(task);
     return (
         <>
             <StyledTask key={task.id}>

@@ -16,7 +16,6 @@ const Form = ({ formId, taskForm}) => {
     const putData = async (form) => {
         // We get the id of the task we are currently editing for updating DB
         const {id} = router.query;
-        console.log(form);
         // Let's try to hit the API to update the task
         try {
             const res = await fetch(`/api/task/${id}`, {
@@ -27,12 +26,9 @@ const Form = ({ formId, taskForm}) => {
                 body: JSON.stringify(form)
             });
             // If somethign goes wrong with the response from the API, throw an error
-            if (!res.ok) {
-                throw new Error('Something went wrong!');
-            }
-            console.log(res);
-
-            // Otherwise, we will get the data from the API response
+            // if (!res.ok) {
+            //     throw new Error('Something went wrong!');
+            // }
             const { data } = await res.json();
             mutate(`/api/task/${id}`, data, false);
             router.push('/')
@@ -74,6 +70,7 @@ const Form = ({ formId, taskForm}) => {
                 onChange={handleChange}>
                 
             </input>
+            <select
             <button type="submit">Submit</button>
 
         </form>

@@ -10,11 +10,9 @@ const fetcher = (url) =>
 const EditTask = () => {
   const router = useRouter()
   const { id } = router.query
-  const { data, error } = useSWR(id ? `/api/task/${id}` : null, fetcher)
-// const data = fetch(`/api/task/${id}`)
-// .then((res) => res.json())
-// .then((json) => json.data);
-console.log(data);
+  const { data, error } = useSWR(id ? `/api/task/${id}` : null, fetcher);
+  console.log(data);
+
   if (!data) return <p>Loading...</p>
 
   const taskForm = {

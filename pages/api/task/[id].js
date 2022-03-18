@@ -16,6 +16,7 @@ export default async function handler(req, res) {
             where: {
             id: parseInt(id),
             },
+            include: { users: true },
         })
         res.status(200).json({ success: true, data: task })
     }
