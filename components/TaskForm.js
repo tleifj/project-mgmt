@@ -2,13 +2,15 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { mutate } from 'swr'
 
-const Form = ({ formId, taskForm}) => {
+const Form = ({ formId, taskForm, users}) => {
     const router = useRouter();
-
+    console.log(users);
+    console.log(taskForm);
     // This is used for managing the local state of the form
     const [form, setForm] = useState({
         name: taskForm.name,
         description: taskForm.description,
+        users: taskForm.users,
     });
 
     // function to handle editing an existing task (PUT)
@@ -70,7 +72,11 @@ const Form = ({ formId, taskForm}) => {
                 onChange={handleChange}>
                 
             </input>
-            <select
+            <select name="users" onChange={handleChange}>
+                {users.map((user) => {
+                    return <option key={user.id} value={user.id}>{user.firstName + ' ' + user.lastName}</option>
+                })}
+            </select>
             <button type="submit">Submit</button>
 
         </form>

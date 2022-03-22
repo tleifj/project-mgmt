@@ -26,8 +26,14 @@ export default async function handler(req, res) {
         const { data } = await prisma.task.update({
             where: { id: parseInt(id) },
             data: {
-            ...body,
+                name: body.name,
+                description: body.description,
+                users: {
+                    set: [{ id: parseInt(body.users) }],
+                },
+            
             },
+            include: { users: true },
         })
         res.status(200).json(data)
     }
