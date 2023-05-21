@@ -42,7 +42,7 @@ export default function CreateTask({ users, projects }) {
       console.error(error);
     }
   };
-  console.log(users);
+  console.log(projects);
   return (
     <div>
       <h1>Create Task</h1>
@@ -106,7 +106,8 @@ export async function getServerSideProps(params) {
     user.updatedAt = user.updatedAt.toString();
     return user;
   });
-  const projects = results.map((project) => {
+  const projectResults = await prisma.project.findMany({});
+  const projects = projectResults.map((project) => {
     project.createdAt = project.createdAt.toString();
     project.updatedAt = project.updatedAt.toString();
     return project;
