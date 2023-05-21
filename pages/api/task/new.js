@@ -14,10 +14,10 @@ export default async function handler(req, res) {
       name: body.name,
       description: body.description,
       project: {
-        set: [{ id: parseInt(body.project) }],
+        connect: { id: parseInt(body.project) },
       },
       users: {
-        set: [{ id: parseInt(body.users) }],
+        connect: [{ id: parseInt(body.users) }],
       },
     },
     include: { users: true, project: true },

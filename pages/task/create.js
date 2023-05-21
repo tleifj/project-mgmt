@@ -35,6 +35,7 @@ export default function CreateTask({ users, projects }) {
       setForm({
         name: "",
         description: "",
+        project: "",
         users: [],
       });
       await Router.push("/");
@@ -65,8 +66,8 @@ export default function CreateTask({ users, projects }) {
         />
         <label htmlFor="users">Project</label>
         <select
-          name="projects"
-          id="projects"
+          name="project"
+          id="project"
           value={form.name}
           onChange={handleChange}
         >
