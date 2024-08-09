@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       name: body.name,
       description: body.description,
       workspace: {
-        connect: { id: 1 },
+        connect: { id: 2 },
       },
     },
     // include: { workspace: true },
