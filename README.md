@@ -35,15 +35,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Up and Running
 
-This project uses PlanetScale as a database. You will need to login via CLI usig the following command:
-
-````pscale auth login
-
-Then you will need to connect to the project with the following command:
-
-```pscale connect project-management main --port 3309
-
-In another terminal window, you will need to run the following command to start the Next.js server:
-
-```npm run dev
-````
+This project uses Supabase as a database. You will need to login via CLI usig the following command:
