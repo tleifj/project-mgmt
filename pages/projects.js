@@ -31,6 +31,7 @@ export default function projectsPage({ projects }) {
 
 export async function getServerSideProps() {
   const results = await prisma.project.findMany({});
+  // console.log(results);
   const projects = results.map((project) => {
     project.createdAt = project.createdAt.toString();
     project.updatedAt = project.updatedAt.toString();

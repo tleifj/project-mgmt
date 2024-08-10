@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-
+import NewWorkspace from "./NewWorkspace";
+import WorkspaceList from "./WorkspaceList";
 
 // This is the custom styles for the sidebar. It will be used as a component down below
 const StyledSideBar = styled.section`
@@ -37,7 +38,7 @@ const StyledSideBar = styled.section`
 `;
 
 const Sidebar = () => {
-    // We need this to set active paths on nav links below
+  // We need this to set active paths on nav links below
   const router = useRouter();
 
   return (
@@ -48,18 +49,17 @@ const Sidebar = () => {
         </Link>
       </div>
       <nav className="app-main-nav">
-      <Link href="/projects">
-          <a>
-           Workspaces
-          </a>
-        </Link>
+        <div>
+          <span>Workspaces</span>
+          <button>+</button>
+        </div>
+        <WorkspaceList />
         <Link href="/projects">
-          <a>
-           All Projects
-          </a>
+          <a>All Projects</a>
         </Link>
       </nav>
       {/* <button onClick={() =>imapConnect()}>Sync Emails</button> */}
+      <NewWorkspace />
     </StyledSideBar>
   );
 };

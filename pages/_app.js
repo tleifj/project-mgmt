@@ -2,15 +2,11 @@ import "../css/style.css";
 // import "../css/form.css";
 import Head from "next/head";
 import Topbar from "../components/Topbar";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/SideBar";
 
-
-function MyApp({
-  Component,
-  pageProps: { ...pageProps },
-}) {
+function MyApp({ Component, pageProps: { ...pageProps } }) {
   return (
-    <html >
+    <html>
       <Head>
         <title>Project Manager</title>
       </Head>
