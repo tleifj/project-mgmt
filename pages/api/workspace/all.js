@@ -5,8 +5,13 @@ export default async function handler(req, res) {
 
   //   if (method === "GET") {
   //   console.log(req);
-  const results = await prisma.workspace.findMany({});
-  //   console.log(results);
+  // const results = await prisma.workspace.findMany({});
+  // get all workspaces and their prpjects
+  const results = await prisma.workspace.findMany({
+    include: {
+      projects: true,
+    },
+  });
   const workspaces = results.map((workspace) => {
     workspace.createdAt = workspace.createdAt.toString();
     workspace.updatedAt = workspace.updatedAt.toString();

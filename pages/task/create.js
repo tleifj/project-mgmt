@@ -36,7 +36,7 @@ export default function CreateTask({ users, projects }) {
         name: "",
         description: "",
         project: "",
-        users: [],
+        users: "",
       });
       await Router.push("/");
     } catch (error) {
@@ -64,11 +64,11 @@ export default function CreateTask({ users, projects }) {
           value={form.description}
           onChange={handleChange}
         />
-        <label htmlFor="users">Project</label>
+        <label htmlFor="project">Project</label>
         <select
           name="project"
           id="project"
-          value={form.name}
+          value={form.project}
           onChange={handleChange}
         >
           {projects.map((project) => {
@@ -83,7 +83,7 @@ export default function CreateTask({ users, projects }) {
         <select
           name="users"
           id="users"
-          value={form.name}
+          value={form.users}
           onChange={handleChange}
         >
           {users.map((user) => {
