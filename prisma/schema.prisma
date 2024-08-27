@@ -44,6 +44,17 @@ model Workspace {
   name        String    @db.VarChar(255)
   description String    @db.VarChar(600)
   projects    Project[]
+  Account     Account?  @relation(fields: [accountId], references: [id])
+  accountId   Int?
+}
+
+model Account {
+  id          Int         @id @default(autoincrement())
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  name        String      @db.VarChar(255)
+  description String      @db.VarChar(600)
+  workspaces  Workspace[]
 }
 
 model User {
