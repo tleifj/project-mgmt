@@ -1,19 +1,23 @@
 import { PrismaClient } from "@prisma/client";
 import Task from "../../../components/Task";
 import Link from "next/link";
+import Topbar from "../../../components/Topbar";
 
 const prisma = new PrismaClient();
 
 export default function SingleProject({ project, tasks }) {
   return (
     <>
-      <h1>{project.name}</h1>
-      <h2>Tasks</h2>
-      <div>
-        <div className="table-header">
-          <div className="table-cell">Name</div>
-          <div className="table-cell">Assigned</div>
+      <Topbar name={project.name}></Topbar>
+      <div className="py-8">
+        <div className="flex w-full py-2 border-b justify-between text-sm gap-4">
+          <div className="flex-[0_0_33%]">Name</div>
+          <div className="flex-[0_0_25%]">Assigned</div>
           <div className="table-cell">Status</div>
+          <div className=" flex gap-4">
+            <div className="table-cell">Start</div>
+            <div className="table-cell">Finish</div>
+          </div>
         </div>
         {tasks.map((task) => {
           return <Task key={task.id} task={task} />;

@@ -3,12 +3,12 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import NewWorkspace from "./NewWorkspace";
 import WorkspaceList from "./WorkspaceList";
+import SidebarAccount from "./SidebarAccount";
 
 // This is the custom styles for the sidebar. It will be used as a component down below
 const StyledSideBar = styled.section`
-  width: 400px;
+  width: 280px;
   height: 100%;
-  padding: 30px 20px;
   border-right: 1px solid rgb(233, 233, 233);
 
   .logo-container {
@@ -42,13 +42,18 @@ const Sidebar = () => {
   const router = useRouter();
 
   return (
-    <StyledSideBar>
-      <div className="logo-container">
-        <Link href="/">
-          <a className="logo">Project Manager</a>
-        </Link>
-      </div>
-      <nav className="app-main-nav">
+    <StyledSideBar className="p-6">
+      <SidebarAccount />
+      <nav className="app-main-nav py-8">
+        <ul>
+          <li>
+            <Link href="/">
+              <a className={router.pathname === "/" ? "active" : ""}>
+                Dashboard
+              </a>
+            </Link>
+          </li>
+        </ul>
         <div>
           <span>Workspaces</span>
           <button>+</button>
