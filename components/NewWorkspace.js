@@ -37,24 +37,35 @@ export default function NewWorkspace() {
   };
   return (
     <div>
-      <h1>New Workspace</h1>
+      <h1 className="text-lg">New Workspace</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
+        <label className="block mt-4 mb-1" htmlFor="workspace-name">
+          Name
+        </label>
         <input
           onChange={handleChange}
           type="text"
-          id="name"
+          id="workspace-name"
           name="name"
           value={form.name}
+          className="block w-full rounded p-2"
         />
-        <label htmlFor="description">Description</label>
+        <label className="block mt-4 mb-1" htmlFor="workspace-description">
+          Description
+        </label>
         <input
+          className="block w-full rounded p-2"
           onChange={handleChange}
-          id="description"
+          id="workspace-description"
           name="description"
           value={form.description}
         ></input>
-        <button type="submit">Create Workspace</button>
+        <button
+          className="bg-primary text-primary-foreground text-sm hover:bg-primary/90 p-2 rounded mt-4"
+          type="submit"
+        >
+          Create Workspace
+        </button>
       </form>
     </div>
   );

@@ -4,6 +4,8 @@ import styled from "styled-components";
 import NewWorkspace from "./NewWorkspace";
 import WorkspaceList from "./WorkspaceList";
 import SidebarAccount from "./SidebarAccount";
+import Modal from "./WorkspaceModal";
+import { useState } from "react";
 
 // This is the custom styles for the sidebar. It will be used as a component down below
 const StyledSideBar = styled.section`
@@ -40,6 +42,7 @@ const StyledSideBar = styled.section`
 const Sidebar = () => {
   // We need this to set active paths on nav links below
   const router = useRouter();
+  let [showModal, setShowModal] = useState(false);
 
   return (
     <StyledSideBar className="p-6">
@@ -56,12 +59,17 @@ const Sidebar = () => {
         </ul>
         <div className="mb-2 flex justify-between items-center">
           <span className="uppercase font-bold">Workspaces</span>
-          <button>+</button>
+          <button
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
+            +
+          </button>
         </div>
         <WorkspaceList />
       </nav>
-      {/* <button onClick={() =>imapConnect()}>Sync Emails</button> */}
-      <NewWorkspace />
+      <Modal showModal={showModal} setShowModal={setShowModal} />
     </StyledSideBar>
   );
 };

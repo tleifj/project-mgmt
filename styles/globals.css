@@ -67,3 +67,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+:root {
+  --light-gray: rgb(226, 232, 240);
+}
+
+input,
+textarea {
+  border: 1px solid var(--light-gray);
+}

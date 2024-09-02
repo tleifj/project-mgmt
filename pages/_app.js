@@ -1,8 +1,9 @@
 import "../styles/globals.css";
 // import "../css/form.css";
 import Head from "next/head";
-import Topbar from "../components/Topbar";
+// import Topbar from "../components/Topbar";
 import Sidebar from "../components/SideBar";
+import Modal from "../components/WorkspaceModal";
 
 function MyApp({ Component, pageProps: { ...pageProps } }) {
   return (

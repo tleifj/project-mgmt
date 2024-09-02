@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 export default function WorkspaceListItem({ workspace }) {
   // Use useState to create toggles for the workspace project lists
@@ -12,7 +13,9 @@ export default function WorkspaceListItem({ workspace }) {
         className="flex justify-between items-center w-full cursor-pointer"
       >
         <h2>{workspace.name}</h2>
-        <span>{">"}</span>
+        <span className="h-4 w-4 flex items-center justify-center">
+          <ChevronRight className="max-w-full" />
+        </span>
       </div>
       {showProjects && (
         <ul>
