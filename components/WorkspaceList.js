@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import { PrismaClient } from "@prisma/client";
-import Link from "next/link";
+import WorkspaceListItem from "./WorkspaceListItem";
 
 const prisma = new PrismaClient();
 
@@ -17,22 +17,7 @@ const WorkspaceList = () => {
     <div>
       {/* Loop through each workspace and display the title. If the workspace has projects, display the projects underneath the workspace title */}
       {data.map((workspace) => (
-        <div key={workspace.id}>
-          <h2>{workspace.name}</h2>
-          <p>{workspace.description}</p>
-          <ul>
-            {workspace.projects.map((project) => (
-              <li key={project.id}>
-                <Link href="/project/[id]" as={`/project/${project.id}`}>
-                  <a>
-                    <h3>{project.name}</h3>
-                    <p>{project.description}</p>
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <WorkspaceListItem key={workspace.id} workspace={workspace} />
       ))}
     </div>
   );

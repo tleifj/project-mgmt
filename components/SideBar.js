@@ -44,7 +44,7 @@ const Sidebar = () => {
   return (
     <StyledSideBar className="p-6">
       <SidebarAccount />
-      <nav className="app-main-nav py-8">
+      <nav className="app-main-nav py-8 text-sm">
         <ul>
           <li>
             <Link href="/">
@@ -54,14 +54,11 @@ const Sidebar = () => {
             </Link>
           </li>
         </ul>
-        <div>
-          <span>Workspaces</span>
+        <div className="mb-2 flex justify-between items-center">
+          <span className="uppercase font-bold">Workspaces</span>
           <button>+</button>
         </div>
         <WorkspaceList />
-        <Link href="/projects">
-          <a>All Projects</a>
-        </Link>
       </nav>
       {/* <button onClick={() =>imapConnect()}>Sync Emails</button> */}
       <NewWorkspace />

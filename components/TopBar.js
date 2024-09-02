@@ -1,5 +1,4 @@
 // import { useSession, signOut } from "next-auth/react"
-import styled from "styled-components";
 import Link from "next/link";
 
 const Topbar = ({ name }) => {
